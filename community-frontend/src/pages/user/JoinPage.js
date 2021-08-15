@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Button, Form } from "react-bootstrap";
 
-const JoinPage = () => {
+const JoinPage = (props) => {
   const [member, setMember] = useState({
     name: "",
     email: "",
@@ -23,17 +23,20 @@ const JoinPage = () => {
     e.preventDefault();
     fetch("http://localhost:8080/api/member", {
       method: "POST",
-      header: { "Content-Type": "application/json; charset=utf-8" },
+      headers: { "Content-Type": "application/json; charset=utf-8" },
       body: JSON.stringify(member),
     })
       .then((res) => {
         if (res.status === 201) return res.json();
         else return null;
       })
-      .then((res)=>{
-        if()
-      })
-      .catch();
+      .then((res) => {
+        if (res !== null) {
+          setMember(res);
+          alert(member.name + "님의 회원가입이 완료되었습니다.");
+          props.history.push("/");
+        }
+      });
   };
   return (
     <div>
@@ -110,7 +113,7 @@ const JoinPage = () => {
         </Form.Group>
 
         <Button variant="success" type="submit">
-          LOGIN
+          SUBMIT
         </Button>
       </Form>
     </div>

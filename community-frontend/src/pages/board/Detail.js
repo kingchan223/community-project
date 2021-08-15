@@ -14,7 +14,7 @@ const Detail = (props) => {
       .then((res) => {
         setBoard(res);
       });
-  }, []);
+  }, [id]);
   return (
     <div>
       <h1>글 상세보기</h1>

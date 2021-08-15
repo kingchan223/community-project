@@ -1,7 +1,7 @@
 import React from "react";
-import { Button, Card } from "react-bootstrap";
+import { Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import styled from "styled-components";
+// import styled from "styled-components";
 
 // const StyledButtonLink = styled(Link)`
 //   border: 1px solid green;
@@ -12,7 +12,7 @@ import styled from "styled-components";
 // `;
 
 const BoardItem = (props) => {
-  const { id, title, author, data, content } = props.board;
+  const { id, title, author } = props.board;
   return (
     <>
       <Card>
