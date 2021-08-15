@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import BoardItem from "../../components/BoardItem";
 
 const Home = () => {
   const [boards, setBoards] = useState([]);
@@ -7,10 +8,17 @@ const Home = () => {
       .then((res) => res.json())
       .then((res) => {
         console.log(res);
+        setBoards(res);
       });
-  });
+  }, []);
 
-  return <div>home</div>;
+  return (
+    <div>
+      {boards.map((board) => (
+        <BoardItem key={board.id} board={board} />
+      ))}
+    </div>
+  );
 };
 
 export default Home;
