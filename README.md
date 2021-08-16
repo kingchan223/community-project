@@ -10,6 +10,7 @@
 - validation
 - ouath2.0
 - security
+- implementation group: 'com.auth0', name: 'java-jwt', version: '3.10.3'
 
 ### React
 
@@ -17,6 +18,7 @@
 - yarn add redux react-redux
 - yarn add react-bootstrap bootstrap
 - yarn add styled-components
+- npm install universal-cookie (jwt토큰 쿠키에 저장)
   '''txt
   import 'bootstrap/dist/css/bootstrap.min.css';
   '''

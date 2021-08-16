@@ -21,7 +21,7 @@ const JoinPage = (props) => {
 
   const saveMember = (e) => {
     e.preventDefault();
-    fetch("http://localhost:8080/api/member", {
+    fetch("http://localhost:8080/api/join", {
       method: "POST",
       headers: { "Content-Type": "application/json; charset=utf-8" },
       body: JSON.stringify(member),

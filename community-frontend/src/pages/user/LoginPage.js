@@ -5,7 +5,7 @@ const LoginPage = (props) => {
   const [member, setMember] = useState({});
   const submitLogin = (e) => {
     e.preventDefault();
-    fetch("http://localhost:8080/api/member/login", {
+    fetch("http://localhost:8080/api/login", {
       method: "POST",
       headers: { "Content-Type": "application/json; charset=utf-8" },
       body: JSON.stringify(member),
@@ -19,7 +19,7 @@ const LoginPage = (props) => {
       })
       .then((res) => {
         if (res !== null) {
-          setMember(res);
+          res.data.setMember(res);
           alert(member.name + "님 환영합니다! 로그인에 성공하셨습니다.");
           props.history.push("/");
         } else {
