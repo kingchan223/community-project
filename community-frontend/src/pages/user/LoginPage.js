@@ -1,27 +1,39 @@
 import React, { useState } from "react";
 import { Button, Form } from "react-bootstrap";
+import { useDispatch } from "react-redux";
+import { memberLogin } from "../../Store";
 
 const LoginPage = (props) => {
-  const [member, setMember] = useState({});
+  const dispatcher = useDispatch();
+  const [member, setMember] = useState({
+    loginId: "",
+    password: "",
+  });
   const submitLogin = (e) => {
     e.preventDefault();
     fetch("http://localhost:8080/api/login", {
       method: "POST",
-      headers: { "Content-Type": "application/json; charset=utf-8" },
+      headers: {
+        "Content-Type": "application/json; charset=utf-8",
+        Accept: "*/*",
+        "Content-Length": JSON.stringify(member).length.toString(),
+      },
       body: JSON.stringify(member),
     })
       .then((res) => {
-        if (res.status === 200) {
-          return res.json();
-        } else {
-          return null;
-        }
+        console.log(res.headers);
+        let jwtToken = res.headers.authorization;
+        console.log(jwtToken);
+        localStorage.setItem("Authorization", jwtToken);
+        return res.json();
       })
       .then((res) => {
-        if (res !== null) {
-          res.data.setMember(res);
-          alert(member.name + "님 환영합니다! 로그인에 성공하셨습니다.");
-          props.history.push("/");
+        if (res.code === 1) {
+          dispatcher(memberLogin(res.data));
+          JSON.stringify(res.data);
+          console.log("--------------");
+          alert(res.data.name + "님 환영합니다! 로그인에 성공하셨습니다.");
+          // props.history.push("/");
         } else {
           alert("로그인에 실패하였습니다.");
         }
