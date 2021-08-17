@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import { Button, Form } from "react-bootstrap";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { memberLogin } from "../../Store";
 
 const LoginPage = (props) => {
   const dispatcher = useDispatch();
-  const [member, setMember] = useState({
+  const { member } = useSelector((store) => store);
+  const [tryMember, setTryMember] = useState({
     loginId: "",
     password: "",
   });
@@ -14,24 +15,20 @@ const LoginPage = (props) => {
     fetch("http://localhost:8080/api/login", {
       method: "POST",
       headers: {
-        "Content-Type": "application/json; charset=utf-8",
-        Accept: "*/*",
-        "Content-Length": JSON.stringify(member).length.toString(),
+        "Content-Type": "application/json",
       },
-      body: JSON.stringify(member),
+      body: JSON.stringify(tryMember),
     })
       .then((res) => {
-        console.log(res.headers);
-        let jwtToken = res.headers.authorization;
-        console.log(jwtToken);
+        let jwtToken = res.headers.get("Authorization");
         localStorage.setItem("Authorization", jwtToken);
         return res.json();
       })
       .then((res) => {
         if (res.code === 1) {
           dispatcher(memberLogin(res.data));
-          JSON.stringify(res.data);
-          console.log("--------------");
+          setTryMember(res.data);
+          console.log("member.role:" + member.role);
           alert(res.data.name + "님 환영합니다! 로그인에 성공하셨습니다.");
           // props.history.push("/");
         } else {
@@ -41,7 +38,7 @@ const LoginPage = (props) => {
   };
 
   const changeValue = (e) => {
-    setMember({
+    setTryMember({
       ...member,
       [e.target.name]: e.target.value,
     });

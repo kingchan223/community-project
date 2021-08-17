@@ -20,6 +20,9 @@ const Header = () => {
             <Link to="/user/1" className="nav-link">
               My Page
             </Link>
+            <Link to="/board/add/board" className="nav-link">
+              ADD WRITE
+            </Link>
           </Nav>
         </Container>
       </Navbar>
