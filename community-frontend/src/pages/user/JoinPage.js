@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Button, Form } from "react-bootstrap";
+import Header from "../../components/LoginHeader";
 
 const JoinPage = (props) => {
   const [member, setMember] = useState({
@@ -40,6 +41,7 @@ const JoinPage = (props) => {
   };
   return (
     <div>
+      <Header />
       <h1>회원가입</h1>
       <Form onSubmit={saveMember}>
         <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">

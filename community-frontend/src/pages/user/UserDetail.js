@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
 import { Card } from "react-bootstrap";
+import LoginHeader from "../../components/LoginHeader";
 
 const UserDetail = () => {
   const [member, setMember] = useState({
@@ -28,6 +29,7 @@ const UserDetail = () => {
   }, []);
   return (
     <div>
+      <LoginHeader />
       <h1>유저 정보 상세보기</h1>
       <Card border="primary" style={{ width: "18rem" }}>
         <Card.Header>번호 : {member.id}</Card.Header>

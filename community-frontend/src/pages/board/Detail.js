@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
+import LoginHeader from "../../components/LoginHeader";
 
 const StyledContentDiv = styled.div`
   border: 1px solid green;
@@ -17,6 +18,7 @@ const Detail = (props) => {
   }, [id]);
   return (
     <div>
+      <LoginHeader />
       <h1>글 상세보기</h1>
       <br></br>
       <h2>제목:{board.title}</h2>

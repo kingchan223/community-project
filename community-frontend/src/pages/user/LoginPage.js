@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
+import Header from "../../components/Header";
 import { memberLogin } from "../../Store";
 
 const LoginPage = (props) => {
   const dispatcher = useDispatch();
-  const { member } = useSelector((store) => store);
   const [tryMember, setTryMember] = useState({
     loginId: "",
     password: "",
@@ -28,9 +28,8 @@ const LoginPage = (props) => {
         if (res.code === 1) {
           dispatcher(memberLogin(res.data));
           setTryMember(res.data);
-          console.log("member.role:" + member.role);
           alert(res.data.name + "님 환영합니다! 로그인에 성공하셨습니다.");
-          // props.history.push("/");
+          props.history.push("/home/" + res.data.name);
         } else {
           alert("로그인에 실패하였습니다.");
         }
@@ -39,13 +38,14 @@ const LoginPage = (props) => {
 
   const changeValue = (e) => {
     setTryMember({
-      ...member,
+      ...tryMember,
       [e.target.name]: e.target.value,
     });
   };
 
   return (
     <div>
+      <Header />
       <h1>로그인</h1>
       <Form onSubmit={submitLogin}>
         <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">

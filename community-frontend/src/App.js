@@ -4,6 +4,7 @@ import Header from "./components/Header";
 import Home from "./pages/board/Home";
 import Detail from "./pages/board/Detail";
 import AddBoardForm from "./pages/board/AddBoardForm.js";
+import LoginHome from "./pages/board/LoginHome.js";
 import LoginPage from "./pages/user/LoginPage";
 import JoinPage from "./pages/user/JoinPage";
 import UserDetail from "./pages/user/UserDetail";
@@ -11,9 +12,9 @@ import UserDetail from "./pages/user/UserDetail";
 function App() {
   return (
     <div>
-      <Header />
       <Container fluid>
         <Route path="/" exact={true} component={Home}></Route>
+        <Route path="/home/:loginId" exact={true} component={LoginHome}></Route>
         {/* board */}
         <Route path="/board/:id" exact={true} component={Detail}></Route>
         <Route
