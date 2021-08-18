@@ -7,7 +7,6 @@ import Header from "../../components/Header";
 const Home = () => {
   const [boards, setBoards] = useState([]);
   const { member } = useSelector((store) => store);
-  console.log(1, member);
   useEffect(() => {
     fetch("http://localhost:8080/api/home", { method: "GET" })
       .then((res) => res.json())

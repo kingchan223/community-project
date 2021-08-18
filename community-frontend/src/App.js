@@ -25,7 +25,11 @@ function App() {
         {/* user */}
         <Route path="/join" exact={true} component={JoinPage}></Route>
         <Route path="/login" exact={true} component={LoginPage}></Route>
-        <Route path="/user/:id" exact={true} component={UserDetail}></Route>
+        <Route
+          path="/member/memberInfo"
+          exact={true}
+          component={UserDetail}
+        ></Route>
       </Container>
     </div>
   );
