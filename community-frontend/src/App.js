@@ -1,6 +1,6 @@
 import { Container } from "react-bootstrap";
 import { Route } from "react-router";
-import Header from "./components/Header";
+// import Header from "./components/Header";
 import Home from "./pages/board/Home";
 import Detail from "./pages/board/Detail";
 import AddBoardForm from "./pages/board/AddBoardForm.js";
