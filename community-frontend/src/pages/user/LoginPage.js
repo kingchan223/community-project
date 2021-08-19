@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Button, Form } from "react-bootstrap";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import Header from "../../components/Header";
 import { memberLogin } from "../../Store";
 
@@ -20,8 +20,10 @@ const LoginPage = (props) => {
       body: JSON.stringify(tryMember),
     })
       .then((res) => {
-        let jwtToken = res.headers.get("Authorization");
-        localStorage.setItem("Authorization", jwtToken);
+        let accessToken = res.headers.get("ACCESS_TOKEN");
+        let refreshToken = res.headers.get("REFRESH_TOKEN");
+        localStorage.setItem("ACCESS_TOKEN", accessToken);
+        localStorage.setItem("REFRESH_TOKEN", refreshToken);
         return res.json();
       })
       .then((res) => {
@@ -30,8 +32,10 @@ const LoginPage = (props) => {
           setTryMember(res.data);
           alert(res.data.name + "님 환영합니다! 로그인에 성공하셨습니다.");
           props.history.push("/home/" + res.data.name);
+        } else if (res.code === -1) {
+          alert("로그인에 실패하였습니다. 아이디, 패스워드를 확인해주세요");
         } else {
-          alert("로그인에 실패하였습니다.");
+          alert("error가 발생했습니다.");
         }
       });
   };
