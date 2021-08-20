@@ -19,7 +19,7 @@ const Header = (props) => {
     <>
       <Navbar bg="dark" variant="dark">
         <Container>
-          <Link to="/home/{member.loginId}" className="navbar-brand">
+          <Link to="/home" className="navbar-brand">
             HOME
           </Link>
           <Nav className="me-auto">

@@ -2,10 +2,7 @@ const LOGIN = "LOGIN";
 const LOGOUT = "LOGOUT";
 
 export const memberLogin = (member) => {
-  return {
-    type: LOGIN,
-    payload: member,
-  };
+  return { type: LOGIN, payload: member };
 };
 
 export const memberLogout = () => {
