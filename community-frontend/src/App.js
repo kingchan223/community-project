@@ -9,6 +9,8 @@ import LoginPage from "./pages/member/LoginPage";
 import JoinPage from "./pages/member/JoinPage";
 import UserDetail from "./pages/member/UserDetail";
 import EditMemberInfo from "./pages/member/EditMemberInfo";
+import AdminBoard from "./pages/admin/AdminBoard";
+import AdminDetail from "./pages/admin/AdminDetail";
 
 function App() {
   return (
@@ -35,6 +37,17 @@ function App() {
           path="/member/memberInfo"
           exact={true}
           component={UserDetail}
+        ></Route>
+        {/* admin */}
+        <Route
+          path="/admin/board/manage"
+          exact={true}
+          component={AdminBoard}
+        ></Route>
+        <Route
+          path="/admin/board/detail/:id"
+          exact={true}
+          component={AdminDetail}
         ></Route>
       </Container>
     </div>
