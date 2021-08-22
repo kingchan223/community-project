@@ -1,26 +1,22 @@
 import React from "react";
-import { Card } from "react-bootstrap";
+import { Button, Card, Table } from "react-bootstrap";
 import { Link } from "react-router-dom";
-// import styled from "styled-components";
-
-// const StyledButtonLink = styled(Link)`
-//   border: 1px solid green;
-//   padding: 10px;
-//   height: 30px;
-//   margin: 20px;
-//   align-items: center;
-// `;
+import styled from "styled-components";
 
 const BoardItem = (props) => {
-  const { id, title, author } = props.board;
+  const { id, title, author, date } = props.board;
   return (
     <>
-      <Card>
+      <Card
+        bg={"dark"}
+        style={{ width: "40rem", height: "100px" }}
+        text={"white"}
+      >
         <Card.Body>
-          <Link to={"/board/" + id}>
-            <Card.Title>제목:{title}</Card.Title>
-          </Link>
-          <Card.Subtitle>작성자:{author}</Card.Subtitle>
+          <Card.Title>
+            <Link to={"/board/" + id}>{title}</Link>
+          </Card.Title>
+          <Card.Text>{author}</Card.Text>
         </Card.Body>
       </Card>
       <br></br>

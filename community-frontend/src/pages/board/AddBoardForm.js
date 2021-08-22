@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import LoginHeader from "../../components/LoginHeader";
 
 const AddBoardForm = (props) => {
-  const { member } = useSelector((store) => store);
+  // const { member } = useSelector((store) => store);
   const [board, setBoard] = useState({
     title: "",
     content: "",
@@ -38,7 +38,7 @@ const AddBoardForm = (props) => {
             })
             .then((res) => {
               alert("글 작성에 성공하셨습니다!");
-              props.history.push("/home/" + member.loginId);
+              props.history.push("/home/");
             });
         } else if (res.code === 3) {
           alert("세션이 만료되었습니다. 다시 로그인 해주세요");
@@ -49,7 +49,7 @@ const AddBoardForm = (props) => {
       })
       .then((res) => {
         alert("글 작성에 성공하셨습니다!");
-        props.history.push("/home/" + member.loginId);
+        props.history.push("/home/");
       })
       .catch((err) => console.log(err));
   };

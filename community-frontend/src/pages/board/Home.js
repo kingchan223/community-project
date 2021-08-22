@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Carousel, Table } from "react-bootstrap";
 // import { useSelector } from "react-redux";
 // import { Link } from "react-router-dom";
 import BoardItem from "../../components/BoardItem";
