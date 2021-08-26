@@ -1,10 +1,9 @@
 import React from "react";
-import { Button, Card, Table } from "react-bootstrap";
+import { Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import styled from "styled-components";
 
 const BoardItem = (props) => {
-  const { id, title, author, date } = props.board;
+  const { id, title, author } = props.board;
   return (
     <>
       <Card

@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Button, Form } from "react-bootstrap";
-import { useSelector } from "react-redux";
 import LoginHeader from "../../components/LoginHeader";
 
 const AddBoardForm = (props) => {
