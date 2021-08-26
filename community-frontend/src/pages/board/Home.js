@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 // import { Link } from "react-router-dom";
 import BoardItem from "../../components/BoardItem";
 import Header from "../../components/Header";
+import "../../css/home.css";
 
 const Home = () => {
   const [boards, setBoards] = useState([]);
@@ -27,8 +28,6 @@ const Home = () => {
   }, []);
 
   const changePage = (page) => {
-    console.log(maxPage);
-    console.log(page);
     if (page < 1) {
       alert("이미 첫 페이지입니다.");
     } else if (maxPage < page) {
@@ -46,17 +45,29 @@ const Home = () => {
   return (
     <div>
       <Header />
-      {boards.map((board) => (
-        <BoardItem key={board.id} board={board} />
-      ))}
-      <span onClick={() => changePage(pageNow - 1)}>⬅️</span>
-      {pages.map((page, index) => (
-        <span key={index} onClick={() => changePage(page)}>
-          {page}
-          {"  "}
-        </span>
-      ))}
-      <span onClick={() => changePage(pageNow + 1)}>➡️</span>
+      <div class="body-box">
+        <div class="boards-box right-box">
+          {boards.map((board) => (
+            <BoardItem key={board.id} board={board} />
+          ))}
+        </div>
+        <div class="left-box">
+          <div class="search-box">
+            <input type="text" placeholder="검색어를 입력해주세요." />
+            <button>검색</button>
+          </div>
+        </div>
+      </div>
+      <div class="page-box">
+        <span onClick={() => changePage(pageNow - 1)}>⬅️</span>
+        {pages.map((page, index) => (
+          <span key={index} onClick={() => changePage(page)}>
+            {page}
+            {"  "}
+          </span>
+        ))}
+        <span onClick={() => changePage(pageNow + 1)}>➡️</span>
+      </div>
     </div>
   );
 };

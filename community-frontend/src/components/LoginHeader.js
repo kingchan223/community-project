@@ -1,12 +1,12 @@
 import React from "react";
 import { Button, Container, Nav, Navbar } from "react-bootstrap";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { memberLogout } from "../Store";
 import { withRouter } from "react-router";
 
 const Header = (props) => {
-  // const { member } = useSelector((store) => store);
+  const { member } = useSelector((store) => store);
   const dispatcher = useDispatch();
   const logout = (e) => {
     dispatcher(memberLogout());
@@ -33,6 +33,7 @@ const Header = (props) => {
               ADD WRITE
             </Link>
           </Nav>
+          <span>{member.name}님 안녕하세요!</span>
         </Container>
       </Navbar>
       <br />

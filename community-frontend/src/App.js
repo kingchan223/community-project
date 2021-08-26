@@ -11,6 +11,7 @@ import UserDetail from "./pages/member/UserDetail";
 import EditMemberInfo from "./pages/member/EditMemberInfo";
 import AdminBoard from "./pages/admin/AdminBoard";
 import AdminDetail from "./pages/admin/AdminDetail";
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -50,6 +51,7 @@ function App() {
           component={AdminDetail}
         ></Route>
       </Container>
+      <Footer></Footer>
     </div>
   );
 }
