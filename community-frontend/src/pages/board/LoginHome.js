@@ -12,7 +12,7 @@ const Home = (props) => {
   const { member } = useSelector((store) => store);
   // console.log(1, member);
   useEffect(() => {
-    fetch("http://localhost:8080/api/home", { method: "GET" })
+    fetch("http://localhost:8080/api/home2", { method: "GET" })
       .then((res) => res.json())
       .then((res) => {
         setBoards(res);
