@@ -51,7 +51,7 @@ const Home = (props) => {
       {boards.map((board) => (
         <BoardItem key={board.id} board={board} />
       ))}
-      <div class="page-box">
+      <div className="page-box">
         <span onClick={() => changePage(pageNow - 1)}>⬅️</span>
         {pages.map((page, index) => (
           <span key={index} onClick={() => changePage(page)}>

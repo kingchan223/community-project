@@ -10,6 +10,9 @@ const Home = () => {
   const [pages, setPages] = useState([]);
   const [pageNow, setPageNow] = useState(1);
   const [maxPage, setMaxPage] = useState(0);
+  const [keyword, setKeyword] = useState("");
+  const [category, setCategory] = useState("title");
+  const selectList = ["title", "content"];
 
   // const { member } = useSelector((store) => store);
   useEffect(() => {
@@ -42,23 +45,56 @@ const Home = () => {
         });
     }
   };
+  const changeValue = (e) => {
+    setKeyword(e.target.value);
+  };
+  const changeValueSelect = (e) => {
+    setCategory(e.target.value);
+  };
+  const submitKeyword = (e) => {
+    e.preventDefault();
+    console.log(category);
+    console.log(keyword);
+  };
+
   return (
     <div>
       <Header />
-      <div class="body-box">
-        <div class="boards-box right-box">
+      <div className="body-box">
+        <div className="boards-box left-box">
           {boards.map((board) => (
             <BoardItem key={board.id} board={board} />
           ))}
         </div>
-        <div class="left-box">
-          <div class="search-box">
-            <input type="text" placeholder="검색어를 입력해주세요." />
-            <button>검색</button>
+        <div className="right-box">
+          <div className="search-box">
+            <form onSubmit={submitKeyword}>
+              <select
+                className="search"
+                onChange={changeValueSelect}
+                value={category}
+              >
+                {selectList.map((item) => (
+                  <option value={item} key={item}>
+                    {item}
+                  </option>
+                ))}
+              </select>
+              <input
+                className="search"
+                type="text"
+                placeholder="검색어를 입력해주세요."
+                name="keyword"
+                onChange={changeValue}
+              />
+              <button className="search" type="submit">
+                search
+              </button>
+            </form>
           </div>
         </div>
       </div>
-      <div class="page-box">
+      <div className="page-box">
         <span onClick={() => changePage(pageNow - 1)}>⬅️</span>
         {pages.map((page, index) => (
           <span key={index} onClick={() => changePage(page)}>
