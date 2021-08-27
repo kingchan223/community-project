@@ -11,7 +11,7 @@ const Home = () => {
   const [pageNow, setPageNow] = useState(1);
   const [maxPage, setMaxPage] = useState(0);
   const [keyword, setKeyword] = useState("");
-  const [category, setCategory] = useState("title");
+  const [selected, setSelected] = useState("title");
   const selectList = ["title", "content"];
 
   // const { member } = useSelector((store) => store);
@@ -49,12 +49,21 @@ const Home = () => {
     setKeyword(e.target.value);
   };
   const changeValueSelect = (e) => {
-    setCategory(e.target.value);
+    setSelected(e.target.value);
   };
   const submitKeyword = (e) => {
     e.preventDefault();
-    console.log(category);
-    console.log(keyword);
+    fetch(
+      "http://localhost:8080/api/home/search?selected=" +
+        selected +
+        "&keyword=" +
+        keyword,
+      { method: "GET" }
+    )
+      .then((res) => res.json())
+      .then((res) => {
+        setBoards(res);
+      });
   };
 
   return (
@@ -72,7 +81,7 @@ const Home = () => {
               <select
                 className="search"
                 onChange={changeValueSelect}
-                value={category}
+                value={selected}
               >
                 {selectList.map((item) => (
                   <option value={item} key={item}>
