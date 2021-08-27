@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import styled from "styled-components";
 import LoginHeader from "../../components/LoginHeader";
 
@@ -8,7 +9,15 @@ const StyledContentDiv = styled.div`
 
 const Detail = (props) => {
   const id = props.match.params.id;
-  const [board, setBoard] = useState({});
+  const { member } = useSelector((store) => store);
+  const [board, setBoard] = useState({
+    title: "",
+    content: "",
+    loginId: "",
+    id: "",
+    author: "",
+    date: "",
+  });
   useEffect(() => {
     fetch("http://localhost:8080/api/board/" + id, {
       method: "GET",
@@ -20,9 +29,9 @@ const Detail = (props) => {
       .then((res) => res.json())
       .then((res) => {
         setBoard(res);
-        console.log(1, board.title);
-        console.log(2, board.author);
-        console.log(3, board.content);
+        console.log(1, res.title);
+        console.log(2, res.loginId);
+        console.log(3, member.loginId);
       });
   }, [id]);
   return (

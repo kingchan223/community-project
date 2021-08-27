@@ -6,13 +6,16 @@ import BoardItem from "../../components/BoardItem";
 import "../../css/home.css";
 
 const Home = (props) => {
-  // const loginId = props.match.params.loginId;
   const [boards, setBoards] = useState([]);
   const [pages, setPages] = useState([]);
   const [pageNow, setPageNow] = useState(1);
   const [maxPage, setMaxPage] = useState(0);
+  const [keyword, setKeyword] = useState("");
+  const [selected, setSelected] = useState("title");
+  const selectList = ["title", "content"];
   const { member } = useSelector((store) => store);
-  // console.log(1, member);
+
+  // const { member } = useSelector((store) => store);
   useEffect(() => {
     fetch("http://localhost:8080/api/home", { method: "GET" })
       .then((res) => res.json())
@@ -27,9 +30,8 @@ const Home = (props) => {
         setMaxPage(res);
       });
   }, []);
+
   const changePage = (page) => {
-    console.log(maxPage);
-    console.log(page);
     if (page < 1) {
       alert("이미 첫 페이지입니다.");
     } else if (maxPage < page) {
@@ -44,13 +46,67 @@ const Home = (props) => {
         });
     }
   };
+  const changeValue = (e) => {
+    setKeyword(e.target.value);
+  };
+  const changeValueSelect = (e) => {
+    setSelected(e.target.value);
+  };
+  const submitKeyword = (e) => {
+    e.preventDefault();
+    fetch(
+      "http://localhost:8080/api/home/search?selected=" +
+        selected +
+        "&keyword=" +
+        keyword,
+      { method: "GET" }
+    )
+      .then((res) => res.json())
+      .then((res) => {
+        setBoards(res);
+      });
+  };
 
   return (
     <div>
       <LoginHeader />
-      {boards.map((board) => (
-        <BoardItem key={board.id} board={board} />
-      ))}
+      <div>하하하:{member.name}</div>
+      <div>하하하:{member.loginId}</div>
+      <div>하하하:</div>
+      <div className="body-box">
+        <div className="boards-box left-box">
+          {boards.map((board) => (
+            <BoardItem key={board.id} board={board} />
+          ))}
+        </div>
+        <div className="right-box">
+          <div className="search-box">
+            <form onSubmit={submitKeyword}>
+              <select
+                className="search"
+                onChange={changeValueSelect}
+                value={selected}
+              >
+                {selectList.map((item) => (
+                  <option value={item} key={item}>
+                    {item}
+                  </option>
+                ))}
+              </select>
+              <input
+                className="search"
+                type="text"
+                placeholder="검색어를 입력해주세요."
+                name="keyword"
+                onChange={changeValue}
+              />
+              <button className="search" type="submit">
+                search
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
       <div className="page-box">
         <span onClick={() => changePage(pageNow - 1)}>⬅️</span>
         {pages.map((page, index) => (
@@ -64,5 +120,4 @@ const Home = (props) => {
     </div>
   );
 };
-
 export default Home;

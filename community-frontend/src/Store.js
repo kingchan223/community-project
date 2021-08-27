@@ -2,7 +2,10 @@ const LOGIN = "LOGIN";
 const LOGOUT = "LOGOUT";
 
 export const memberLogin = (member) => {
-  return { type: LOGIN, payload: member };
+  return {
+    type: LOGIN,
+    payload: member,
+  };
 };
 
 export const memberLogout = () => {
@@ -15,11 +18,13 @@ const initstate = {
   isLogin: false,
   member: {
     id: "",
-    loginId: "",
     name: "",
+    loginId: "",
     email: "",
     role: "",
-    password: "",
+    city: "",
+    street: "",
+    zipcode: "",
   },
 };
 
@@ -32,11 +37,13 @@ const reducer = (state = initstate, action) => {
         isLogin: false,
         member: {
           id: "",
-          loginId: "",
-          password: "",
           name: "",
+          loginId: "",
           email: "",
           role: "",
+          city: "",
+          street: "",
+          zipcode: "",
         },
       };
     default:
