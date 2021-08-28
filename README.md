@@ -22,6 +22,8 @@
   '''txt
   import 'bootstrap/dist/css/bootstrap.min.css';
   '''
+- yarn add redux-persist
+- yarn add redux-logger
 
 ### 프로젝트 세팅
 

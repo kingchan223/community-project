@@ -12,6 +12,7 @@ import EditMemberInfo from "./pages/member/EditMemberInfo";
 import AdminBoard from "./pages/admin/AdminBoard";
 import AdminDetail from "./pages/admin/AdminDetail";
 import Footer from "./components/Footer";
+import EditPost from "./pages/board/EditPost";
 
 function App() {
   return (
@@ -21,11 +22,8 @@ function App() {
         <Route path="/home" exact={true} component={LoginHome}></Route>
         {/* board */}
         <Route path="/board/:id" exact={true} component={Detail}></Route>
-        <Route
-          path="/board/add/board"
-          exact={true}
-          component={AddBoardForm}
-        ></Route>
+        <Route path="/board/add" exact={true} component={AddBoardForm}></Route>
+        {/* <Route path="/board/edit/:id" exact={true} component={EditPost}></Route> */}
         {/* user */}
         <Route path="/join" exact={true} component={JoinPage}></Route>
         <Route
