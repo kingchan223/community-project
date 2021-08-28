@@ -74,7 +74,7 @@ const Detail = (props) => {
       <label>글 내용:</label>
       <StyledContentDiv name="content">{board.content}</StyledContentDiv>
       <button onClick={deletePost}>DELETE</button>
-      <button onClick={editPost}>EDIT</button>
+      <button onClick={()=>editPost(id)}>EDIT</button>
     </div>
   );
 };
