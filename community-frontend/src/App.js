@@ -16,41 +16,41 @@ import EditPost from "./pages/board/EditPost";
 
 function App() {
   return (
-    <div>
-      <Container fluid>
-        <Route path="/" exact={true} component={Home}></Route>
-        <Route path="/home" exact={true} component={LoginHome}></Route>
-        {/* board */}
-        <Route path="/board/:id" exact={true} component={Detail}></Route>
-        <Route path="/board/add" exact={true} component={AddBoardForm}></Route>
-        {/* <Route path="/board/edit/:id" exact={true} component={EditPost}></Route> */}
-        {/* user */}
-        <Route path="/join" exact={true} component={JoinPage}></Route>
-        <Route
-          path="/member/editinfo"
-          exact={true}
-          component={EditMemberInfo}
-        ></Route>
-        <Route path="/login" exact={true} component={LoginPage}></Route>
-        <Route
-          path="/member/memberInfo"
-          exact={true}
-          component={UserDetail}
-        ></Route>
-        {/* admin */}
-        <Route
-          path="/admin/board/manage"
-          exact={true}
-          component={AdminBoard}
-        ></Route>
-        <Route
-          path="/admin/board/detail/:id"
-          exact={true}
-          component={AdminDetail}
-        ></Route>
-      </Container>
-      <Footer></Footer>
-    </div>
+      <div>
+        <Container fluid>
+          <Route path="/" exact={true} component={Home}></Route>
+          <Route path="/home" exact={true} component={LoginHome}></Route>
+          {/* board */}
+          <Route path="/board/:id" exact={true} component={Detail}></Route>
+          <Route path="/board/add" exact={true} component={AddBoardForm}></Route>
+          <Route path="/board/edit/:id" exact={true} component={EditPost}></Route>
+          {/* user */}
+          <Route path="/join" exact={true} component={JoinPage}></Route>
+          <Route
+              path="/member/editinfo"
+              exact={true}
+              component={EditMemberInfo}
+          />
+          <Route path="/login" exact={true} component={LoginPage}></Route>
+          <Route
+              path="/member/memberInfo"
+              exact={true}
+              component={UserDetail}
+          ></Route>
+          {/* admin */}
+          <Route
+              path="/admin/board/manage"
+              exact={true}
+              component={AdminBoard}
+          ></Route>
+          <Route
+              path="/admin/board/detail/:id"
+              exact={true}
+              component={AdminDetail}
+          ></Route>
+        </Container>
+        <Footer></Footer>
+      </div>
   );
 }
 
