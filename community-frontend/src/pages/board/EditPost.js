@@ -59,7 +59,6 @@ const EditPost = (props) => {
           <Form.Label>글 제목</Form.Label>
           <Form.Control
             type="text"
-            // placeholder={board.title}
             name="title"
             onChange={changeValue}
             value={board.title}
