@@ -29,7 +29,7 @@ const Header = (props) => {
             <Link to="/member/memberInfo" className="nav-link">
               My Page
             </Link>
-            <Link to="/board/add/board" className="nav-link">
+            <Link to="/board/add" className="nav-link">
               ADD WRITE
             </Link>
           </Nav>

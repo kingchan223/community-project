@@ -70,9 +70,6 @@ const Home = (props) => {
   return (
     <div>
       <LoginHeader />
-      <div>하하하:{member.name}</div>
-      <div>하하하:{member.loginId}</div>
-      <div>하하하:</div>
       <div className="body-box">
         <div className="boards-box left-box">
           {boards.map((board) => (
