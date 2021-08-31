@@ -39,6 +39,7 @@ const JoinPage = (props) => {
         }
       });
   };
+
   return (
     <div>
       <Header />
@@ -113,7 +114,6 @@ const JoinPage = (props) => {
             name="zipcode"
           />
         </Form.Group>
-
         <Button variant="success" type="submit">
           SUBMIT
         </Button>

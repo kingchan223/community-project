@@ -5,3 +5,18 @@
 .new-comment{
     width:200px;
 }
+.comment-content{
+
+}
+.comment-content{
+    color: #1b254f;
+    font-weight: bold;
+}
+.comment-author{
+    font-size: small;
+    color: #5c5555;
+}
+.comment-date{
+    font-size: small;
+    color: #5c5555;
+}

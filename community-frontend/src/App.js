@@ -13,45 +13,48 @@ import AdminBoard from "./pages/admin/AdminBoard";
 import AdminDetail from "./pages/admin/AdminDetail";
 import Footer from "./components/Footer";
 import EditPost from "./pages/board/EditPost";
+import Header from "./components/Header";
+import Home2 from "./pages/Home2";
+import Posts from "./pages/board/Posts";
 
 function App() {
-  return (
-      <div>
-        <Container fluid>
-          <Route path="/" exact={true} component={Home}></Route>
-          <Route path="/home" exact={true} component={LoginHome}></Route>
-          {/* board */}
-          <Route path="/board/:id" exact={true} component={Detail}></Route>
-          <Route path="/board/add" exact={true} component={AddBoardForm}></Route>
-          <Route path="/board/edit/:id" exact={true} component={EditPost}></Route>
-          {/* user */}
-          <Route path="/join" exact={true} component={JoinPage}></Route>
-          <Route
-              path="/member/editinfo"
-              exact={true}
-              component={EditMemberInfo}
-          />
-          <Route path="/login" exact={true} component={LoginPage}></Route>
-          <Route
-              path="/member/memberInfo"
-              exact={true}
-              component={UserDetail}
-          ></Route>
-          {/* admin */}
-          <Route
-              path="/admin/board/manage"
-              exact={true}
-              component={AdminBoard}
-          ></Route>
-          <Route
-              path="/admin/board/detail/:id"
-              exact={true}
-              component={AdminDetail}
-          ></Route>
-        </Container>
-        <Footer></Footer>
-      </div>
-  );
+    return (
+        <div>
+            <Header />
+            <Route path="/" exact={true} component={Home2}/>
+            <Route path="/posts" exact={true} component={Posts}/>
+            {/*  <Route path="/home" exact={true} component={LoginHome}></Route>*/}
+            {/*  /!* board *!/*/}
+            {/*  <Route path="/board/:id" exact={true} component={Detail}></Route>*/}
+            {/*  <Route path="/board/add" exact={true} component={AddBoardForm}></Route>*/}
+            {/*  <Route path="/board/edit/:id" exact={true} component={EditPost}></Route>*/}
+            {/*  /!* user *!/*/}
+            {/*  <Route path="/join" exact={true} component={JoinPage}></Route>*/}
+            {/*  <Route*/}
+            {/*      path="/member/editinfo"*/}
+            {/*      exact={true}*/}
+            {/*      component={EditMemberInfo}*/}
+            {/*  />*/}
+            {/*  <Route path="/login" exact={true} component={LoginPage}></Route>*/}
+            {/*  <Route*/}
+            {/*      path="/member/memberInfo"*/}
+            {/*      exact={true}*/}
+            {/*      component={UserDetail}*/}
+            {/*  ></Route>*/}
+            {/*  /!* admin *!/*/}
+            {/*  <Route*/}
+            {/*      path="/admin/board/manage"*/}
+            {/*      exact={true}*/}
+            {/*      component={AdminBoard}*/}
+            {/*  ></Route>*/}
+            {/*  <Route*/}
+            {/*      path="/admin/board/detail/:id"*/}
+            {/*      exact={true}*/}
+            {/*      component={AdminDetail}*/}
+            {/*  ></Route>*/}
+            <Footer/>
+        </div>
+    );
 }
 
 export default App;

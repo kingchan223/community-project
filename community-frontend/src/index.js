@@ -8,6 +8,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Provider } from "react-redux";
 import { createStore } from "redux";
 import reducer from "./Store";
+import "./static/fonts/Roboto.css";
 
 const store = createStore(reducer);
 
