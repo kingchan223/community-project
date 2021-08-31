@@ -1,13 +1,24 @@
-.home-body-middle-div1{
+.post-body{
+    margin: 0 auto;
+    position: relative;
+    top:10rem;
+    max-width: 100%!important;
+    background: #fff !important;
+    height:20rem;
+    text-decoration: none;
+}
+.post-body-div{
+    background-color:#ffff;
+}
+.post-body-middle-div1{
     text-align: center;
     justify-content: center;
     background-color:#ffff;
 }
-
-.home-body-div{
-    background-color:#ffff;
-}
-
-.home-body-middle-image{
+.post-body-middle-image{
+    max-width: 76.8rem;
+    height: 20rem;
+    margin: 0 auto 1.2rem;
+    border-radius: 5px;
     background-color:#ffff;
 }

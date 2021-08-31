@@ -3,6 +3,8 @@ import { Button, Form } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import Header from "../../components/Header";
 import { memberLogin } from "../../Store";
+import {Link} from "react-router-dom";
+import "../../css/loginPage.css"
 
 const LoginPage = (props) => {
   const dispatcher = useDispatch();
@@ -55,35 +57,49 @@ const LoginPage = (props) => {
   };
 
   return (
-    <div>
-      <Header />
-      <h1>로그인</h1>
-      <Form onSubmit={submitLogin}>
-        <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-          <Form.Label>아이디</Form.Label>
-          <Form.Control
-            type="text"
-            placeholder="아이디를 입력하세요"
-            onChange={changeValue}
-            name="loginId"
-          />
-        </Form.Group>
-
-        <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-          <Form.Label>비밀번호</Form.Label>
-          <Form.Control
-            type="password"
-            placeholder="*******"
-            onChange={changeValue}
-            name="password"
-          />
-        </Form.Group>
-        <Button variant="success" type="submit">
-          LOGIN
-        </Button>
-      </Form>
-    </div>
+      <div className={"loginPage-container"}>
+        <p className={"heading"}>Login in</p>
+        <div className={"box"}>
+          <p>Email</p>
+          <div>
+            <input type={"email"} name={"email"} id={""} placeholder={"Enter your email"}/>
+          </div>
+        </div>
+        <div className={"box"}>
+          <p>Password</p>
+          <div>
+            <input type={"password"} name={"password"} placeholder={"Enter your password"}/>
+          </div>
+        </div>
+        <button className={"loginButton"}>Login</button>
+        <p className={"text"}>Dont you have account?<Link to={"/join"}>Sign up</Link></p>
+      </div>
   );
 };
 
 export default LoginPage;
+      {/*<h1>로그인</h1>*/}
+      {/*<Form onSubmit={submitLogin}>*/}
+      {/*  <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">*/}
+      {/*    <Form.Label>아이디</Form.Label>*/}
+      {/*    <Form.Control*/}
+      {/*      type="text"*/}
+      {/*      placeholder="아이디를 입력하세요"*/}
+      {/*      onChange={changeValue}*/}
+      {/*      name="loginId"*/}
+      {/*    />*/}
+      {/*  </Form.Group>*/}
+
+      {/*  <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">*/}
+      {/*    <Form.Label>비밀번호</Form.Label>*/}
+      {/*    <Form.Control*/}
+      {/*      type="password"*/}
+      {/*      placeholder="*******"*/}
+      {/*      onChange={changeValue}*/}
+      {/*      name="password"*/}
+      {/*    />*/}
+      {/*  </Form.Group>*/}
+      {/*  <Button variant="success" type="submit">*/}
+      {/*    LOGIN*/}
+      {/*  </Button>*/}
+      {/*</Form>*/}

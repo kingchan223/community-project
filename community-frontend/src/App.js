@@ -16,6 +16,7 @@ import EditPost from "./pages/board/EditPost";
 import Header from "./components/Header";
 import Home2 from "./pages/Home2";
 import Posts from "./pages/board/Posts";
+import PostDetail from "./pages/board/PostDetail";
 
 function App() {
     return (
@@ -25,7 +26,7 @@ function App() {
             <Route path="/posts" exact={true} component={Posts}/>
             {/*  <Route path="/home" exact={true} component={LoginHome}></Route>*/}
             {/*  /!* board *!/*/}
-            {/*  <Route path="/board/:id" exact={true} component={Detail}></Route>*/}
+            <Route path="/post/:id" exact={true} component={PostDetail}/>
             {/*  <Route path="/board/add" exact={true} component={AddBoardForm}></Route>*/}
             {/*  <Route path="/board/edit/:id" exact={true} component={EditPost}></Route>*/}
             {/*  /!* user *!/*/}
@@ -35,7 +36,7 @@ function App() {
             {/*      exact={true}*/}
             {/*      component={EditMemberInfo}*/}
             {/*  />*/}
-            {/*  <Route path="/login" exact={true} component={LoginPage}></Route>*/}
+            <Route path="/login" exact={true} component={LoginPage}/>
             {/*  <Route*/}
             {/*      path="/member/memberInfo"*/}
             {/*      exact={true}*/}

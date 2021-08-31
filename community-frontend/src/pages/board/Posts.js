@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import BoardItem from "../../components/BoardItem";
 import BoardItem2 from "../../components/BoardItem2";
-
+import "../../css/posts.css"
 const Posts = () => {
     const [posts, setPosts] = useState([]);
     const [pages, setPages] = useState([]);
@@ -51,13 +51,13 @@ const Posts = () => {
 
     return (
         <div>
-            <div className={"home-body"}>
+            <div className={"post-body"}>
                 {/*<Header/>*/}
-                <div className={"home-body-div"}>
-                    <div className={"home-body-middle-div1"}>
-                        <section className={"home-body-middle-image"}>
-                            {posts.map((board) => (
-                                <BoardItem2 key={board.id} board={board} />
+                <div className={"post-body-div"}>
+                    <div className={"post-body-middle-div1"}>
+                        <section className={"post-body-middle-image"}>
+                            {posts.map((post) => (
+                                <BoardItem2 key={post.id} board={post} />
                             ))}
                         </section>
                     </div>
