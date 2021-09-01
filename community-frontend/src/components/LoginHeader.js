@@ -16,28 +16,28 @@ const Header = (props) => {
     props.history.push("/");
   };
   return (
-    <>
-      <Navbar bg="dark" variant="dark">
-        <Container>
-          <Link to="/home" className="navbar-brand">
-            HOME
-          </Link>
-          <Nav className="me-auto">
-            <Button className="nav-link" onClick={logout}>
-              LOGOUT
-            </Button>
-            <Link to="/member/memberInfo" className="nav-link">
-              My Page
+      <>
+        <Navbar bg="dark" variant="dark">
+          <Container>
+            <Link to="/home" className="navbar-brand">
+              HOME
             </Link>
-            <Link to="/board/add" className="nav-link">
-              ADD WRITE
-            </Link>
-          </Nav>
-          <span>{member.name}님 안녕하세요!</span>
-        </Container>
-      </Navbar>
-      <br />
-    </>
+            <Nav className="me-auto">
+              <Button className="nav-link" onClick={logout}>
+                LOGOUT
+              </Button>
+              <Link to="/member/memberInfo" className="nav-link">
+                My Page
+              </Link>
+              <Link to="/board/add" className="nav-link">
+                ADD WRITE
+              </Link>
+            </Nav>
+            <span>{member.name}님 안녕하세요!</span>
+          </Container>
+        </Navbar>
+        <br />
+      </>
   );
 };
 export default withRouter(Header);

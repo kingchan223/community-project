@@ -1,19 +1,22 @@
 .post-item-div{
     justify-content: center;
     max-width: 76.8rem;
-    height:4.2rem;
+    height:4.7rem;
     background-color: #82a8ea;
     border-radius:5px;
     text-align: center;
     align-items: center;
     display: flex;
 }
+
 .post-item-title{
     text-decoration: none;
 }
+
 Link{
     text-decoration: none;
 }
+
 .post-item-author-id{
     font-size:0.8rem;
     color:grey;

@@ -1,9 +1,9 @@
 import React from "react";
 import { Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import "../css/borderItem.css"
+import "../css/postItem.css"
 const BoardItem = (props) => {
-    const { id, title, author } = props.board;
+    const { id, title, loginId } = props.board;
     return (
         <>
             <div className={"post-item-div"}>
@@ -13,7 +13,7 @@ const BoardItem = (props) => {
                     </Link>
                 </div>
                 &nbsp; &nbsp;
-                <div className={"post-item-author-id"}>작성자:{author}</div>
+                <div className={"post-item-author-id"}>작성자:{loginId}</div>
             </div>
             <br/>
         </>

@@ -1,0 +1,55 @@
+.heading{
+    color:white;
+    font-size:2em;
+    margin-bottom:0.5em;
+}
+.userDetail-body-div{
+    margin: 0 auto;
+    position: relative;
+    top:15rem;
+    max-width: 40%!important;
+    background: #fff !important;
+    height:25rem;
+    color:whitesmoke;
+}
+
+.userDetail-body-div2{
+    margin: 0 auto;
+    border-radius:5px;
+}
+
+.userDetail-body-div2{
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    color:whitesmoke;
+    background: #4a8ad5;
+}
+
+.userDetail-body-div3{
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    margin: 10px auto 0;
+}
+.userInfo-edit-btn{
+    background-color: #e04848;
+    color:white;
+    border-radius:5px;
+}
+
+.userInfo-message-btn{
+    background-color: #a2724d;
+    color:white;
+    border-radius:5px;
+}
+
+.loginButton{
+    margin-top:10px;
+    margin-bottom:10px;
+    border-radius:5px;
+}
+.loginButton:hover{
+    transform: translate(-1%,5%);
+    box-shadow: 0 0 10px #ffca2c;
+}

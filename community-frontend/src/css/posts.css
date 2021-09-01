@@ -1,16 +1,13 @@
-
-
 .post-body{
     margin: 0 auto;
     position: relative;
     top:10rem;
     max-width: 100%!important;
     background: #fff !important;
-    height:20rem;
+    height:30rem;
     text-decoration: none;
 }
 .post-body-div{
-    height:20rem;
     background-color:#ffff;
 }
 .post-body-middle-div1{
@@ -30,23 +27,29 @@
     border-radius: 5px;
     background-color:#ffff;
 }
-
+.search-box{
+    position:relative;
+    width: 100%;
+    top:23rem;
+    left:49rem;
+    height:1rem;
+}
 .page-box{
     position:relative;
     width: 100%;
-    top:30rem;
-    right:2rem;
+    top:24rem;
+    left:40rem;
     height:1rem;
 }
 .post-span-btn{
     display:inline-block;
     margin-bottom: 10rem;
     position:absolute;
-    right:4rem;
-    border-radius: 5px;
+    left:25rem;
 }
 
 .post-btn{
-    border-radius: 5px;
-    margin-bottom: 1rem;
+    width: 63px;
+    height:39px;
+    background-color: #5f8f3c;
 }

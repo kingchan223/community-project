@@ -9,6 +9,10 @@ import AfterLogin from "./AfterLogin";
 
 const Header = () => {
     const { member, isLogin } = useSelector((store) => store);
+    const logoutBtnStyle = {
+        display:"inline",
+        color:"blue"
+    }
     const a = 10;
     function Greeting(props) {
         const isLogin = props.isLogin;
