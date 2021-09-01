@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from 'react';
 import BoardItem from "../../components/BoardItem";
-import BoardItem2 from "../../components/BoardItem2";
 import "../../css/posts.css"
 const Posts = () => {
     const [posts, setPosts] = useState([]);
@@ -57,16 +56,34 @@ const Posts = () => {
                     <div className={"post-body-middle-div1"}>
                         <section className={"post-body-middle-image"}>
                             {posts.map((post) => (
-                                <BoardItem2 key={post.id} board={post} />
+                                <BoardItem key={post.id} board={post} />
                             ))}
                         </section>
                     </div>
                 </div>
                 {/*<Footer/>*/}
             </div>
-            );
+            <div className="page-box">
+                <span onClick={() => changePage(pageNow - 1)}>⬅️</span>
+                {pages.map((page, index) => (
+                    <span key={index} onClick={() => changePage(page)}>
+                        {page}
+                        {"  "}
+                    </span>
+                ))}
+                <span onClick={() => changePage(pageNow + 1)}>➡️</span>
+                <span className={"post-span-btn"}><button className={"post-btn"}>글작성</button></span>
+            </div>
         </div>
     );
 };
 
 export default Posts;
+
+
+
+
+
+
+
+

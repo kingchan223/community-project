@@ -14,7 +14,7 @@ import AdminDetail from "./pages/admin/AdminDetail";
 import Footer from "./components/Footer";
 import EditPost from "./pages/board/EditPost";
 import Header from "./components/Header";
-import Home2 from "./pages/Home2";
+import Home2 from "./pages/board/Home2";
 import Posts from "./pages/board/Posts";
 import PostDetail from "./pages/board/PostDetail";
 

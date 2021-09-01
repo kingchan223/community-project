@@ -1,30 +1,22 @@
 import React from "react";
 import { Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
-
+import "../css/borderItem.css"
 const BoardItem = (props) => {
-  const { id, title, author } = props.board;
-  return (
-    <>
-      <Card
-        bg={"dark"}
-        style={{
-          width: "40rem",
-          height: "72px",
-          marginLeft: "50px",
-          marginBottom: "1px",
-        }}
-        text={"white"}
-      >
-        <Card.Body>
-          <Card.Title>
-            <Link to={"/board/" + id}>{title}</Link>
-          </Card.Title>
-          <Card.Text>작성자:{author}</Card.Text>
-        </Card.Body>
-      </Card>
-      <br></br>
-    </>
-  );
+    const { id, title, author } = props.board;
+    return (
+        <>
+            <div className={"post-item-div"}>
+                <div className={"post-item-title"}>
+                    <Link to={"/post/" + id}>
+                        <p className={"bp"}>{title}</p>
+                    </Link>
+                </div>
+                &nbsp; &nbsp;
+                <div className={"post-item-author-id"}>작성자:{author}</div>
+            </div>
+            <br/>
+        </>
+    );
 };
 export default BoardItem;

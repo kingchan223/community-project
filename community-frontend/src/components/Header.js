@@ -3,10 +3,20 @@ import { Container, Nav, Navbar } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "../css/Header.css";
 import {useSelector} from "react-redux";
+import BeforeLogin from "./BeforeLogin";
+import Footer from "./Footer";
+import AfterLogin from "./AfterLogin";
 
 const Header = () => {
-    const { member } = useSelector((store) => store);
-
+    const { member, isLogin } = useSelector((store) => store);
+    const a = 10;
+    function Greeting(props) {
+        const isLogin = props.isLogin;
+        if (isLogin) {
+            return <AfterLogin />;
+        }
+        return <BeforeLogin />;
+    }
     return (
         <>
             <section>
@@ -21,15 +31,20 @@ const Header = () => {
                                 </Link>
                             </button>
                             <button className={"home-header-ctn"}>
-                                <Link to={"/login"} style={{ textDecoration: 'none', color:"black" }}>
-                                    🚪️<p>Login</p>
-                                </Link>
+                                {/*<Link to={"/login"} style={{ textDecoration: 'none', color:"black" }}>*/}
+                                {/*    🚪️<p>Login</p>*/}
+                                {/*</Link>*/}
+                                <Greeting isLogin={isLogin}/>
                             </button>
                         </div>
                     </div>
                     <nav className={"home-body-nav"}>
                         <div className={"home-body-nav-div"}>
-                            <button className={"nav-btn"}>🐬<Link to={"/posts"} style={{ textDecoration: 'none', color:"black" }}><span>자유게시판</span></Link></button>
+                            <button className={"nav-btn"}>🐬
+                                <Link to={"/posts"} style={{ textDecoration: 'none', color:"black" }}>
+                                    <span>자유게시판</span>
+                                </Link>
+                            </button>
                             <button className={"nav-btn"}>🐳️<Link to={"/notice"} style={{ textDecoration: 'none', color:"black" }}><span>공지사항</span></Link></button>
                             <button className={"nav-btn"}>🐋<Link to={"/#"} style={{ textDecoration: 'none', color:"black" }}><span>menu3</span></Link></button>
                             <button className={"nav-btn"}>🦈<Link to={"/#"} style={{ textDecoration: 'none', color:"black" }}><span>menu4</span></Link></button>

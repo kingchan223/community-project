@@ -1,7 +1,7 @@
 import React from 'react';
-import "../css/Home2.css"
-import Header from "../components/Header";
-import Footer from "../components/Footer";
+import "../../css/Home2.css"
+import Header from "../../components/Header";
+import Footer from "../../components/Footer";
 import {Link} from "react-router-dom";
 const Home2 = () => {
     return (
