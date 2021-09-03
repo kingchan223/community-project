@@ -12,6 +12,7 @@ const LoginPage = (props) => {
         password: "",
     });
     const submitLogin = (e) => {
+        console.log(tryMember);
         e.preventDefault();
         fetch("http://localhost:8080/api/login", {
             method: "POST",

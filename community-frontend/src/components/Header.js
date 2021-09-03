@@ -50,7 +50,7 @@ const Header = () => {
                                 </Link>
                             </button>
                             <button className={"nav-btn"}>🐳️<Link to={"/notice"} style={{ textDecoration: 'none', color:"black" }}><span>공지사항</span></Link></button>
-                            <button className={"nav-btn"}>🐋<Link to={"/#"} style={{ textDecoration: 'none', color:"black" }}><span>menu3</span></Link></button>
+                            <button className={"nav-btn"}>🐋<Link to={"/#"} style={{ textDecoration: 'none', color:"black" }}><span>채팅하기</span></Link></button>
                             <button className={"nav-btn"}>🦈<Link to={"/#"} style={{ textDecoration: 'none', color:"black" }}><span>menu4</span></Link></button>
                             <button className={"nav-btn"}>🦭<Link to={"/#"} style={{ textDecoration: 'none', color:"black" }}><span>menu5</span></Link></button>
                         </div>

@@ -51,35 +51,35 @@ const EditPost = (props) => {
     });
   };
   return (
-    <div>
-      <LoginHeader />
-      <h1>글쓰기</h1>
-      <Form onSubmit={submitEdit}>
-        <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-          <Form.Label>글 제목</Form.Label>
-          <Form.Control
-            type="text"
-            name="title"
-            onChange={changeValue}
-            value={board.title}
-          />
-        </Form.Group>
-        <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-          <Form.Label>글 내용</Form.Label>
-          <Form.Control
-            as="textarea"
-            rows={20}
-            placeholder={board.content}
-            name="content"
-            onChange={changeValue}
-            value={board.content}
-          />
-        </Form.Group>
-        <Button variant="success" type="submit">
-          SUBMIT
-        </Button>
-      </Form>
-    </div>
+      <div>
+        <LoginHeader />
+        <h1>글쓰기</h1>
+        <Form onSubmit={submitEdit}>
+          <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+            <Form.Label>글 제목</Form.Label>
+            <Form.Control
+                type="text"
+                name="title"
+                onChange={changeValue}
+                value={board.title}
+            />
+          </Form.Group>
+          <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
+            <Form.Label>글 내용</Form.Label>
+            <Form.Control
+                as="textarea"
+                rows={20}
+                placeholder={board.content}
+                name="content"
+                onChange={changeValue}
+                value={board.content}
+            />
+          </Form.Group>
+          <Button variant="success" type="submit">
+            SUBMIT
+          </Button>
+        </Form>
+      </div>
   );
 };
 

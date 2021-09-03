@@ -1,12 +1,21 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
-import { Card } from "react-bootstrap";
-import { useSelector } from "react-redux";
+import {Button, Card} from "react-bootstrap";
+import {useDispatch, useSelector} from "react-redux";
 import "../../css/userDetail.css"
 import {Link} from "react-router-dom";
+import {memberLogout} from "../../Store";
 
 const UserDetail = (props) => {
     const { member } = useSelector((store) => store);
+    const dispatcher = useDispatch();
+    const logout = (e) => {
+        dispatcher(memberLogout());
+        localStorage.removeItem("ACCESS_TOKEN");
+        localStorage.removeItem("REFRESH_TOKEN");
+        alert("로그아웃 되었습니다.");
+        props.history.push("/");
+    };
 
     return (
         <div className={"userDetail-body"}>
@@ -41,6 +50,11 @@ const UserDetail = (props) => {
                     <Link to={"/userinfo/message"}>
                         <button className={"userInfo-message-btn"}>쪽지함</button>
                     </Link>
+                </div>
+                <div className={"userDetail-body-div3"}>
+                    <button className={"userInfo-logout-btn"} onClick={logout}>
+                        LOGOUT
+                    </button>
                 </div>
             </div>
         </div>

@@ -16,6 +16,7 @@ import PostDetail from "./pages/board/PostDetail";
 import PostsByKeyword from "./pages/board/PostsByKeyword";
 import EditPost from "./pages/board/EditPost";
 import MessagePage from "./pages/member/MessagePage";
+import JoinPage from "./pages/board/JoinPage";
 
 function App() {
     return (
@@ -30,7 +31,7 @@ function App() {
             <Route path="/post/add" exact={true} component={PostAddForm}/>
             <Route path="/board/edit/:id" exact={true} component={EditPost}/>
             {/*  /!* user *!/*/}
-            {/*  <Route path="/join" exact={true} component={JoinPage}></Route>*/}
+            <Route path="/join" exact={true} component={JoinPage}/>
             <Route path="/userinfo/message" exact={true} component={MessagePage}/>
             {/*  <Route*/}
             {/*      path="/member/editinfo"*/}
