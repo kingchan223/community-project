@@ -24,6 +24,7 @@
   '''
 - yarn add redux-persist
 - yarn add redux-logger
+- yarn add @stomp/stompjs sockjs-client
 
 ### 프로젝트 세팅
 

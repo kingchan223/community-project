@@ -17,43 +17,43 @@ import PostsByKeyword from "./pages/board/PostsByKeyword";
 import EditPost from "./pages/board/EditPost";
 import MessagePage from "./pages/member/MessagePage";
 import JoinPage from "./pages/board/JoinPage";
+import MemberList from "./pages/member/MemberList";
+import Chatting from "./pages/Chatting";
+import Boards from "./pages/board/Boards";
 
 function App() {
-    return (
-        <div>
-            <Header />
-            <Route path="/" exact={true} component={Home2}/>
-            <Route path="/posts" exact={true} component={Posts}/>
-            <Route path="/posts/search/:selected/:keyword" exact={true} component={PostsByKeyword}/>
-            {/*  <Route path="/home" exact={true} component={LoginHome}></Route>*/}
-            {/*  /!* board *!/*/}
-            <Route path="/post/detail/:id" exact={true} component={PostDetail}/>
-            <Route path="/post/add" exact={true} component={PostAddForm}/>
-            <Route path="/board/edit/:id" exact={true} component={EditPost}/>
-            {/*  /!* user *!/*/}
-            <Route path="/join" exact={true} component={JoinPage}/>
-            <Route path="/userinfo/message" exact={true} component={MessagePage}/>
-            {/*  <Route*/}
-            {/*      path="/member/editinfo"*/}
-            {/*      exact={true}*/}
-            {/*      component={EditMemberInfo}*/}
-            {/*  />*/}
-            <Route path="/login" exact={true} component={LoginPage}/>
-            <Route path="/userInfo" exact={true} component={UserDetail}/>
-            {/*  /!* admin *!/*/}
-            {/*  <Route*/}
-            {/*      path="/admin/board/manage"*/}
-            {/*      exact={true}*/}
-            {/*      component={AdminBoard}*/}
-            {/*  ></Route>*/}
-            {/*  <Route*/}
-            {/*      path="/admin/board/detail/:id"*/}
-            {/*      exact={true}*/}
-            {/*      component={AdminDetail}*/}
-            {/*  ></Route>*/}
-            <Footer/>
-        </div>
-    );
+        return (
+            <div>
+                    <Header />
+                    <Route path="/" exact={true} component={Home2}/>
+                    <Route path="/posts" exact={true} component={Posts}/>
+                    <Route path="/posts/search/:selected/:keyword" exact={true} component={PostsByKeyword}/>
+                    <Route path="/chatting" exact={true} component={MemberList}/>
+                    {/*  /!* board *!/*/}
+                    <Route path="/post/detail/:id" exact={true} component={PostDetail}/>
+                    <Route path="/post/add" exact={true} component={PostAddForm}/>
+                    <Route path="/board/edit/:id" exact={true} component={EditPost}/>
+                    <Route path="/ha" exact={true} component={Boards}/>
+                    {/*  /!* user *!/*/}
+                    <Route path="/join" exact={true} component={JoinPage}/>
+                    <Route path="/userinfo/message" exact={true} component={MessagePage}/>
+                    <Route path="/chat/:sender/:receiver" exact={true} component={Chatting}/>
+                    <Route path="/login" exact={true} component={LoginPage}/>
+                    <Route path="/userInfo" exact={true} component={UserDetail}/>
+                    {/*  /!* admin *!/*/}
+                    {/*  <Route*/}
+                    {/*      path="/admin/board/manage"*/}
+                    {/*      exact={true}*/}
+                    {/*      component={AdminBoard}*/}
+                    {/*  ></Route>*/}
+                    {/*  <Route*/}
+                    {/*      path="/admin/board/detail/:id"*/}
+                    {/*      exact={true}*/}
+                    {/*      component={AdminDetail}*/}
+                    {/*  ></Route>*/}
+                    <Footer/>
+            </div>
+        );
 }
 
 export default App;

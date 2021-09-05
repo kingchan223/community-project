@@ -24,7 +24,7 @@ const Header = () => {
     return (
         <>
             <section>
-                <haeder className={"home-header"}>
+                <header className={"home-header"}>
                     <div className={"home-title-div1"}>
                         <div className={"home-title-left"}/>
                         <div className={"home-title-center"}><Link to={"/"}>HOME PAGE</Link></div>
@@ -50,12 +50,12 @@ const Header = () => {
                                 </Link>
                             </button>
                             <button className={"nav-btn"}>🐳️<Link to={"/notice"} style={{ textDecoration: 'none', color:"black" }}><span>공지사항</span></Link></button>
-                            <button className={"nav-btn"}>🐋<Link to={"/#"} style={{ textDecoration: 'none', color:"black" }}><span>채팅하기</span></Link></button>
+                            <button className={"nav-btn"}>🐋<Link to={"/chatting"} style={{ textDecoration: 'none', color:"black" }}><span>채팅하기</span></Link></button>
                             <button className={"nav-btn"}>🦈<Link to={"/#"} style={{ textDecoration: 'none', color:"black" }}><span>menu4</span></Link></button>
                             <button className={"nav-btn"}>🦭<Link to={"/#"} style={{ textDecoration: 'none', color:"black" }}><span>menu5</span></Link></button>
                         </div>
                     </nav>
-                </haeder>
+                </header>
             </section>
         </>
     );
