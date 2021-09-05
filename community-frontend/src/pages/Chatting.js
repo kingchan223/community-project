@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {Stomp} from "@stomp/stompjs";
 import * as SockJS from "sockjs-client";
+import webStomp from 'webstomp-client';
 
 const Chatting = (props) => {
     const sender = props.match.params.sender;
@@ -10,7 +11,9 @@ const Chatting = (props) => {
     let username = "";
     let stompClient = null;
     let [content, setContent] = useState({val:""});
+    let [roomName , setRoomName] = useState({roomname:""})
     let messageArea = document.querySelector('#greetings');
+    const [chatRoomDto, setChatRoomDto] = useState([]);
 
 //     let stompClient = null;
 //     let username = null;
@@ -82,9 +85,9 @@ const Chatting = (props) => {
         username = sender;
         console.log("asd");
         if(username) {
-            let socket = new SockJS('/ws');
-            stompClient = Stomp.over(socket);
-            stompClient.connect({}, onConnected, onError);
+            let socket = new SockJS("/stomp/chat");
+            let stomp = webStomp.over(socket);
+            stomp.connect({}, onConnected, onError);
         }else{
             console.log("name없음");
         }
@@ -103,7 +106,7 @@ const Chatting = (props) => {
 
     function onConnected() {
         // Subscribe to the Public Topic
-        stompClient.subscribe('/topic/public', onMessageReceived);
+        stompClient.subscribe("/sub/chat/room/", onMessageReceived);
         // Tell your username to the server
         stompClient.send("/app/chat.addUser",
             {},
@@ -122,7 +125,7 @@ const Chatting = (props) => {
             content: content.val,
             type: 'CHAT'
         };
-        stompClient.send("ws://localhost:8080/app/chat.sendMessage", {}, JSON.stringify(chatMessage));
+        stompClient.send("/app/chat.addUser", {}, JSON.stringify(chatMessage));
         setContent({...content, val: "",});
         e.preventDefault();
     }
@@ -170,6 +173,21 @@ const Chatting = (props) => {
         })
     }
 
+    const changeValue2 = (e) => {
+        setRoomName({
+            ...roomName,
+            [e.target.name]:e.target.value,
+        })
+    }
+
+    const createRoom = () => {
+        fetch("http://localhost:8080/chat/room",{method:"POST",body:{"name":roomName.roomname}})
+            .then((res)=>res.json())
+            .then((res)=>{
+                setChatRoomDto(res);
+            });
+    }
+
     return (
         <div>
             <noscript>
@@ -184,6 +202,11 @@ const Chatting = (props) => {
                             <div className="row">
                                 <div className="col-md-6">
                                     <form className="form-inline">
+                                        <div className="form-group">
+                                            <label htmlFor="roomName">방만들기:</label>
+                                            <input type={"text"} name={"roomname"} onChange={"changeValue2"}/>
+                                            <button id="connect" className="btn btn-default" onClick={createRoom}>방만들기</button>
+                                        </div>
                                         <div className="form-group">
                                             <label htmlFor="connect">WebSocket connection:</label>
                                             <button id="connect" className="btn btn-default" onClick={connect}>Connect</button>
@@ -202,19 +225,15 @@ const Chatting = (props) => {
                                     </form>
                                 </div>
                             </div>
-                            <div className="row">
-                                <div className="col-md-12">
-                                    <table id="conversation" className="table table-striped">
-                                        <thead>
-                                        <tr>
-                                            <th>Greetings</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody id="greetings">
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
+                            <table id="conversation" className="table table-striped">
+                                <thead>
+                                <tr>
+                                    <th>Greetings</th>
+                                </tr>
+                                </thead>
+                                <tbody id="greetings">
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
