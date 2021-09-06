@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import "../../css/ha.css"
-const Boards = () => {
+const TBoards = () => {
     const [content, setContent] = useState({va: ""});
 
     const changeValue = (e) => {
@@ -20,4 +20,4 @@ const Boards = () => {
     );
 };
 
-export default Boards;
+export default TBoards;

@@ -1,7 +1,9 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {Stomp} from "@stomp/stompjs";
 import * as SockJS from "sockjs-client";
 import webStomp from 'webstomp-client';
+import ChatUserItem from "../components/ChatUserItem";
+import ChatRoomItem from "../components/ChatRoomItem";
 
 const Chatting = (props) => {
     const sender = props.match.params.sender;
@@ -14,7 +16,7 @@ const Chatting = (props) => {
     let [roomName , setRoomName] = useState({roomname:""})
     let messageArea = document.querySelector('#greetings');
     const [chatRoomDto, setChatRoomDto] = useState([]);
-
+    const [chatRooms, setChatRooms] = useState([]);
 //     let stompClient = null;
 //     let username = null;
 //
@@ -78,6 +80,14 @@ const Chatting = (props) => {
 //         $( "#send" ).click(function() { sendName(); });
 //         $( "#set-username" ).click(function() { setUsername(); });
 //     });
+
+    useEffect(() =>{
+        fetch("http://localhost:8080/chat/rooms",{method:"GET"})
+            .then((res)=>res.json())
+            .then((res)=>{
+                setChatRooms(res);
+            });
+    },[]);
 
     function connect(e) {
         e.preventDefault();
@@ -225,6 +235,9 @@ const Chatting = (props) => {
                                     </form>
                                 </div>
                             </div>
+                            {chatRooms.map((chatRoom)=>(
+                                <ChatRoomItem key={chatRoom.roomId} chatRoom={chatRoom}/>
+                            ))}
                             <table id="conversation" className="table table-striped">
                                 <thead>
                                 <tr>

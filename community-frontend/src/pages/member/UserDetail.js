@@ -1,6 +1,4 @@
-import React, { useEffect } from "react";
-import { useState } from "react";
-import {Button, Card} from "react-bootstrap";
+import React from "react";
 import {useDispatch, useSelector} from "react-redux";
 import "../../css/userDetail.css"
 import {Link} from "react-router-dom";

@@ -1,10 +1,8 @@
 import React from "react";
-import { Container, Nav, Navbar } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "../css/Header.css";
 import {useSelector} from "react-redux";
 import BeforeLogin from "./BeforeLogin";
-import Footer from "./Footer";
 import AfterLogin from "./AfterLogin";
 
 const Header = () => {

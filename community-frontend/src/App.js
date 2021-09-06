@@ -19,33 +19,27 @@ import MessagePage from "./pages/member/MessagePage";
 import JoinPage from "./pages/board/JoinPage";
 import MemberList from "./pages/member/MemberList";
 import Chatting from "./pages/Chatting";
-import Boards from "./pages/board/Boards";
+import ChatRoom from "./pages/ChatRoom";
 
 function App() {
         return (
             <div>
                     <Header />
                     <Route path="/" exact={true} component={Home2}/>
-                    <Route path="/posts" exact={true} component={Posts}/>
+                    <Route path="/test" exact={true} component={Posts}/>
                     <Route path="/posts/search/:selected/:keyword" exact={true} component={PostsByKeyword}/>
                     <Route path="/chatting" exact={true} component={MemberList}/>
                     {/*  /!* board *!/*/}
                     <Route path="/post/detail/:id" exact={true} component={PostDetail}/>
                     <Route path="/post/add" exact={true} component={PostAddForm}/>
                     <Route path="/board/edit/:id" exact={true} component={EditPost}/>
-                    <Route path="/ha" exact={true} component={Boards}/>
                     {/*  /!* user *!/*/}
                     <Route path="/join" exact={true} component={JoinPage}/>
                     <Route path="/userinfo/message" exact={true} component={MessagePage}/>
                     <Route path="/chat/:sender/:receiver" exact={true} component={Chatting}/>
                     <Route path="/login" exact={true} component={LoginPage}/>
                     <Route path="/userInfo" exact={true} component={UserDetail}/>
-                    {/*  /!* admin *!/*/}
-                    {/*  <Route*/}
-                    {/*      path="/admin/board/manage"*/}
-                    {/*      exact={true}*/}
-                    {/*      component={AdminBoard}*/}
-                    {/*  ></Route>*/}
+                    <Route path="/chatRoom/:name/:roomId" exact={true} component={ChatRoom}/>
                     {/*  <Route*/}
                     {/*      path="/admin/board/detail/:id"*/}
                     {/*      exact={true}*/}

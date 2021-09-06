@@ -16,7 +16,6 @@ const ChatUserItem = (props) => {
             <td>{name}</td>
             <td >{email}</td>
             <td><Link to={"/chat/"+loginId+"/"+member.loginId}><button>채팅하기</button></Link></td>
-
         </tr>
     );
 };

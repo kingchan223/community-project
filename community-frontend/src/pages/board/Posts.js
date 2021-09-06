@@ -1,8 +1,9 @@
 import React, {useEffect, useState} from 'react';
 import BoardItem from "../../components/BoardItem";
-import queryStirng from 'query-string'
 import "../../css/posts.css"
 import {Link} from "react-router-dom";
+import SockJS from "sockjs-client";
+
 const Posts = (props) => {
     const [posts, setPosts] = useState([]);
     const [pages, setPages] = useState([]);
@@ -16,19 +17,21 @@ const Posts = (props) => {
     })
     const selectList = ["title", "content"];
 
-    useEffect(() => {
-        fetch("http://localhost:8080/api/home", { method: "GET" })
-            .then((res) => res.json())
-            .then((res) => {
-                setPosts(res.boardList);
-                setPages(res.pageList);
-            });
-        fetch("http://localhost:8080/api/maxPage", { method: "GET" })
-            .then((res) => res.json())
-            .then((res) => {
-                setMaxPage(res);
-            });
-    }, []);
+
+    const client = new SockJS.Client({
+        brokerURL: '/stomp/chat',
+        connectHeaders: {
+            login: 'user',
+            passcode: 'password',
+        },
+        debug: function (str) {
+            console.log(str);
+        },
+        reconnectDelay: 5000,
+        heartbeatIncoming: 4000,
+        heartbeatOutgoing: 4000,
+    });
+
 
     const changePage = (page) => {
         if (page < 1) {

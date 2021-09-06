@@ -6,7 +6,7 @@ import "../../css/loginPage.css"
 
 const LoginPage = (props) => {
     const dispatcher = useDispatch();
-    const { isLogin, member } = useSelector((store) => store);
+    // const { isLogin, member } = useSelector((store) => store);
     const [tryMember, setTryMember] = useState({
         loginId: "",
         password: "",
