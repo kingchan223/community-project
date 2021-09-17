@@ -10,54 +10,45 @@ const ChatRoom = (props) => {
     const { member } = useSelector((store) => store);
     const [text, setText] = useState("");
     let username = member.loginId;
+    const [textLine, setTextLine] = useState(["a","b","c"]);
+
     let stompClient = null;
 
+    const connecting = ()=>{
 
+        const Stomp = require('stompjs')
+        let SockJS = require('sockjs-client',)
+        SockJS = new SockJS('/stomp/chat', {transports: ['websocket']});
+        stompClient = Stomp.over(SockJS);
+        console.log(1,stompClient);
 
-    const Stomp = require('stompjs')
-    let SockJS = require('sockjs-client')
-    SockJS = new SockJS('/stomp/chat')
-    stompClient = Stomp.over(SockJS);
-
-    const onConnected = () => {
-        // Subscribing to the public topic
-        stompClient.subscribe("/sub/chat/room/" + roomId, onMessageReceived);
-        // Registering user to server as a public chat user
-        stompClient.send('/pub/chat/enter', {}, JSON.stringify({roomId: roomId, writer: username}))
-    }
-
-    const onError = (error) => {
-        console.log("error: 'Could not connect you to the Chat Room Server. Please refresh this page and try again!'");
-    }
-
-    stompClient.connect({},onConnected, onError);
-
-
-    const onMessageReceived = (payload) => {
-        console.log(payload);
-    }
-
-    stompClient.connect({}, function (){
-        console.log("STOMP Connection")
-        //4. subscribe(path, callback)으로 메세지를 받을 수 있음
-        stompClient.subscribe("/sub/chat/room/" + roomId, function (chat) {
-            let content = JSON.parse(chat.body);
-            let writer = content.writer;
-            console.log(content + "  " + writer);
+        stompClient.connect({},function(){
+            stompClient.subscribe("/sub/chat/room/" + roomId, function (chat) {
+                let content = JSON.parse(chat.body);
+                let writer = content.writer;
+                let message = content.message;
+                console.log(writer + " : " + message);
+                // Registering user to server as a public chat user
+                stompClient.send('/pub/chat/enter', {}, JSON.stringify({roomId: roomId, writer: username}));
+            });
         });
+    };
 
-        //3. send(path, header, message)로 메세지를 보낼 수 있음
-        stompClient.send('/pub/chat/enter', {}, JSON.stringify({roomId: roomId, writer: username}))
-    });
+    const disconnect = () => {
+        stompClient.disconnect();
+    };
+
+    const sendMessage = () =>{
+        console.log(stompClient);
+        if(stompClient!=null)
+            stompClient.send('/pub/chat/message', {}, JSON.stringify({roomId: roomId, message: text, writer: username}));
+        else
+            alert("아직 연결중 입니다. 잠시 기다려주세요");
+    };
 
     const changeValue = (e) => {
         setText(e.target.value);
-    }
-
-    const sendMessage = () =>{
-        stompClient.send('/pub/chat/message', {}, JSON.stringify({roomId: roomId, message: text, writer: username}));
-    }
-
+    };
 
     return (
         <div>
@@ -73,10 +64,19 @@ const ChatRoom = (props) => {
                                 </div>
                                 <div className="col-6">
                                     <div className="input-group mb-3">
+                                        <button className="btn btn-outline-secondary" type="button" id="button-connect" onClick={connecting}>connect
+                                        </button>
+                                        <button className="btn btn-outline-secondary" type="button" id="button-disconnect" onClick={disconnect}>disconnect
+                                        </button>
                                         <input type="text" id="msg" className="form-control" name={"text"} onChange={changeValue}/>
                                         <div className="input-group-append">
                                             <button className="btn btn-outline-secondary" type="button" id="button-send" onClick={sendMessage}>전송
                                             </button>
+                                            {textLine.map((item) => (
+                                                <div value={item} key={item}>
+                                                    {item}
+                                                </div>
+                                            ))}
                                         </div>
                                     </div>
                                 </div>
